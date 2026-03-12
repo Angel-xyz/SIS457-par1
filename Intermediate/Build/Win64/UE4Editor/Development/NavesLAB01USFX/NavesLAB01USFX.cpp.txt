@@ -1,0 +1,2 @@
+D:\src_SIS457\NavesLAB01USFX\Intermediate\Build\Win64\UE4Editor\Development\NavesLAB01USFX\Definitions.NavesLAB01USFX.h
+D:\src_SIS457\NavesLAB01USFX\Source\NavesLAB01USFX\NavesLAB01USFX.h
