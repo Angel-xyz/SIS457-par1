@@ -32,6 +32,8 @@ private:
 	FVector PosicionInicial;
 	float Tolerancia = 50.0f;
 
+	float TiempoAcumulado = 0.0f;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
