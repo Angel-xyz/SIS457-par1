@@ -6,6 +6,9 @@
 #include "GameFramework/GameModeBase.h"
 #include "NavesLAB01USFXGameMode.generated.h"
 
+class AEnemigo;
+class APawn;
+
 UCLASS(MinimalAPI)
 class ANavesLAB01USFXGameMode : public AGameModeBase
 {
@@ -18,6 +21,19 @@ public:
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaTime) override;
 
+public:
+	
+	TArray<AEnemigo*> AEnemigos;
+
+	FTimerHandle TimerFormacion;
+
+	void FormarNavesFrentePawn();
+
+	APawn* PlayerPawn;  // Referencia al Pawn
+
+	float IntervaloFormacion = 5.0f;
+
+	float EspaciadoVertical = 100.0f;
 };
 
 

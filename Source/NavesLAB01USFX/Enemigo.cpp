@@ -52,7 +52,26 @@ void AEnemigo::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-    if (PuntosRuta.Num() > 1)
+    if (!bMovimientoAutonomo)
+    {
+        FVector PosicionActual = GetActorLocation();
+        
+        float Distancia = FVector::Dist(PosicionActual, PosicionDestinoGameMode);
+
+        if (Distancia <= Tolerancia)
+        {
+            // Waypoint alcanzado, siguiente
+            return;
+        }
+        else
+        {
+            // Mover en línea recta
+            FVector Direccion = (PosicionDestinoGameMode - PosicionActual).GetSafeNormal();
+            FVector NuevaUbicacion = PosicionActual + (Direccion * VelocidadMovimiento * DeltaTime);
+            SetActorLocation(NuevaUbicacion);
+        }
+    }
+    else if (PuntosRuta.Num() > 1)
     {
         FVector UbicacionActual = GetActorLocation();
         FVector UbicacionDestino = PuntosRuta[IndicePuntoRutaActual];
