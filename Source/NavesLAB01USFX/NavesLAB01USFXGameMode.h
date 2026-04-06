@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
+#include "SpaceEntity.h"
 #include "NavesLAB01USFXGameMode.generated.h"
 
 class AEnemigo;
@@ -34,6 +35,8 @@ public:
 	float IntervaloFormacion = 5.0f;
 
 	float EspaciadoVertical = 100.0f;
+
+	TArray<ASpaceEntity*> Enemies;
 };
 
 

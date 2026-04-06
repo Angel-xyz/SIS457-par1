@@ -39,18 +39,24 @@ void ANavesLAB01USFXGameMode::BeginPlay()
     }*/
     for (int32 i = 0; i < 6; i++)
     {
+        ASpaceEntity* NewEnemy = nullptr;
         FVector SpawnLocation(FMath::RandRange(-1000.0f, 1000.0f), FMath::RandRange(-1000.0f, 1000.0f), 300.0f);
         if (i < 2)
         {
-            ASpaceEntity* NewEnemy = World->SpawnActor<ASpaceEntity>(ASpaceEntity::StaticClass(), SpawnLocation, FRotator::ZeroRotator);
+            NewEnemy = World->SpawnActor<ASpaceEntity>(ASpaceEntity::StaticClass(), SpawnLocation, FRotator::ZeroRotator);
         }
         else if (i < 4)
         {
-            AEnemyPatrolShip* NewEnemy = World->SpawnActor<AEnemyPatrolShip>(AEnemyPatrolShip::StaticClass(), SpawnLocation, FRotator::ZeroRotator);
+            NewEnemy = World->SpawnActor<AEnemyPatrolShip>(AEnemyPatrolShip::StaticClass(), SpawnLocation, FRotator::ZeroRotator);
         }
         else
         {
-            AEnemyErraticShip* NewEnemy = World->SpawnActor<AEnemyErraticShip>(AEnemyErraticShip::StaticClass(), SpawnLocation, FRotator::ZeroRotator);
+            NewEnemy = World->SpawnActor<AEnemyErraticShip>(AEnemyErraticShip::StaticClass(), SpawnLocation, FRotator::ZeroRotator);
+        }
+        if (NewEnemy)
+        {
+            Enemies.Add(NewEnemy);
+            UE_LOG(LogTemp, Warning, TEXT("New Enemy added to EnemiesArray"))
         }
     }
 
