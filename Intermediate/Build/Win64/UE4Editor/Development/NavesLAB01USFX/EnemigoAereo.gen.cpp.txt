@@ -1,7 +1,0 @@
-D:\src_SIS457\NavesLAB01USFX\Intermediate\Build\Win64\UE4Editor\Development\NavesLAB01USFX\Definitions.NavesLAB01USFX.h
-C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UObject/GeneratedCppIncludes.h
-C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UObject/MetaData.h
-D:\src_SIS457\NavesLAB01USFX\Source\NavesLAB01USFX/EnemigoAereo.h
-D:\src_SIS457\NavesLAB01USFX\Source\NavesLAB01USFX\Enemigo.h
-D:\src_SIS457\NavesLAB01USFX\Intermediate\Build\Win64\UE4Editor\Inc\NavesLAB01USFX\Enemigo.generated.h
-D:\src_SIS457\NavesLAB01USFX\Intermediate\Build\Win64\UE4Editor\Inc\NavesLAB01USFX\EnemigoAereo.generated.h
