@@ -3,6 +3,10 @@
 #include "NavesLAB01USFXGameMode.h"
 #include "NavesLAB01USFXPawn.h"
 #include "Enemigo.h"
+#include "SpaceEntity.h"
+#include "EnemyPatrolShip.h"
+#include "EnemyErraticShip.h"
+#include "MazeManager.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -20,6 +24,7 @@ void ANavesLAB01USFXGameMode::BeginPlay()
     if (!World) return;
 
     // Spawn 10 naves y agregar a array
+    /*
     for (int32 i = 0; i < 10; i++)
     {
         FVector UbicacionSpawn(-600 + (i * 50), 150 + FMath::Sin(i) * 50, 150);  // Spread inicial
@@ -31,7 +36,27 @@ void ANavesLAB01USFXGameMode::BeginPlay()
             AEnemigos.Add(NuevaNave);
             UE_LOG(LogTemp, Warning, TEXT("Nave %d spawnada"), i);
         }
+    }*/
+    for (int32 i = 0; i < 6; i++)
+    {
+        FVector SpawnLocation(FMath::RandRange(-1000.0f, 1000.0f), FMath::RandRange(-1000.0f, 1000.0f), 300.0f);
+        if (i < 2)
+        {
+            ASpaceEntity* NewEnemy = World->SpawnActor<ASpaceEntity>(ASpaceEntity::StaticClass(), SpawnLocation, FRotator::ZeroRotator);
+        }
+        else if (i < 4)
+        {
+            AEnemyPatrolShip* NewEnemy = World->SpawnActor<AEnemyPatrolShip>(AEnemyPatrolShip::StaticClass(), SpawnLocation, FRotator::ZeroRotator);
+        }
+        else
+        {
+            AEnemyErraticShip* NewEnemy = World->SpawnActor<AEnemyErraticShip>(AEnemyErraticShip::StaticClass(), SpawnLocation, FRotator::ZeroRotator);
+        }
     }
+
+    AMazeManager* Mazemanagerr = World->SpawnActor<AMazeManager>(AMazeManager::StaticClass(), FVector(0.0f, 0.0f, 230.0f), FRotator::ZeroRotator);
+
+
     
     // Obtener Pawn jugador
     PlayerPawn = UGameplayStatics::GetPlayerPawn(this, 0);
