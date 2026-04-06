@@ -65,6 +65,7 @@ void AMazeManager::GenerateMaze()
 				float Rotationn = FMath::RandBool() ? 0.0f : 90.0f;
 				FRotator SpawnRotation = FRotator(0.0f, Rotationn, 0.0f);
 
+				
 				// Choose one kind of wall
 				int32 WallType = FMath::RandRange(0, 3);
 				AMazeWall* NewWall = nullptr;

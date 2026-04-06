@@ -23,8 +23,8 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-private:
 	TArray<AMazeWall*> Quadrants[8];
+private:
 
 	UPROPERTY(EditAnywhere, Category = "Maze Settings")
 	float WorldSizeX = 4000.0f; // Ancho total
