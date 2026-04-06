@@ -11,8 +11,8 @@ UCLASS()
 class NAVESLAB01USFX_API AMazeManager : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
+
+public:
 	// Sets default values for this actor's properties
 	AMazeManager();
 
@@ -20,10 +20,15 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	TArray<AMazeWall*> Quadrants[8];
+
+	FTimerHandle MyTimer;
+
+	bool Voids[4][2];
+	
 private:
 
 	UPROPERTY(EditAnywhere, Category = "Maze Settings")
@@ -40,4 +45,6 @@ private:
 	int32 GridRows = 20; // Filas en Y
 
 	void GenerateMaze();
+
+	void Teleport();
 };

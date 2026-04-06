@@ -23,6 +23,8 @@ void AMazeManager::BeginPlay()
 	Super::BeginPlay();
 	UE_LOG(LogTemp, Warning, TEXT("Generando laberinto..."));
 	GenerateMaze();
+
+	GetWorld()->GetTimerManager().SetTimer(MyTimer, this, &AMazeManager::Teleport, 5.0f, true);
 	
 }
 
@@ -61,7 +63,6 @@ void AMazeManager::GenerateMaze()
 
 				// Set SpawnLoc and a random rotation ()
 				FVector SpawnLocation = FVector(RealWorldX, RealWorldY, 250.0f);
-				int32 posibilities = FMath::RandRange(0, 1);
 				float Rotationn = FMath::RandBool() ? 0.0f : 90.0f;
 				FRotator SpawnRotation = FRotator(0.0f, Rotationn, 0.0f);
 
@@ -107,4 +108,23 @@ void AMazeManager::GenerateMaze()
 		}
 	}
 
+}
+
+void AMazeManager::Teleport()
+{
+	float OffsetX = WorldSizeX / 2.0f;
+	float OffsetY = WorldSizeY / 2.0f;
+	TArray<AMazeWall*> Agrupaciones;
+	int counter = 0;
+	int num = FMath::RandRange(0, 7);
+	bool bsize = (Quadrants[num].Num() >= 10);
+	if (bsize)
+	{
+		for (int i = 0; i < 10; i++)
+		{
+			FVector NewLocation = FVector(FMath::RandRange(-OffsetX, OffsetX), FMath::RandRange(-OffsetY, OffsetY), 250.0f);
+			Quadrants[num][i]->SetActorLocation(NewLocation, true);
+			UE_LOG(LogTemp, Warning, TEXT("Muro teletransportado..."));
+		}
+	}
 }
